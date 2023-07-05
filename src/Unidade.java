@@ -5,15 +5,13 @@ public abstract class Unidade {
     private Posicao posicao;
     private int vida;
     private int dano;
-    private int defesa;
     private int movimento;
+    private String cor;
 
 
-    public Unidade(int vida, int dano, int defesa, int movimento) {
-        this.vida=vida;
-        this.dano=dano;
-        this.defesa=defesa;
-        this.movimento=movimento;
+    public Unidade( String cor) {
+        this.cor=cor;
+
 
     }
 
@@ -47,15 +45,37 @@ public abstract class Unidade {
     }
 
     public boolean validaExtremidade(int posicaoNoTabuleiro) {
-        return posicaoNoTabuleiro % 8 == 0;
+        return posicaoNoTabuleiro % 10 == 0;
 
     }
 
     public abstract ArrayList<Posicao> possiveisMovimento(Campo campo);
-    // public abstract char icone();
+
+    public abstract void atacar(Campo campo, Posicao posicao);
+
 
 
     public Posicao getPosicao() {
         return posicao;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public int getDano() {
+        return dano;
+    }
+
+    public void setDano(int dano) {
+        this.dano = dano;
+    }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
     }
 }

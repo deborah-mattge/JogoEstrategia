@@ -8,4 +8,11 @@ public class Posicao {
     public void setUnidade(Unidade unidade) {
         this.unidade = unidade;
     }
+
+    @Override
+    public String toString() {
+        return "Posicao{" +
+                "unidade=" + unidade +
+                '}';
+    }
 }
