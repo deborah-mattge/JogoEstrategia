@@ -11,8 +11,6 @@ public class Posicao {
 
     @Override
     public String toString() {
-        return "Posicao{" +
-                "unidade=" + unidade +
-                '}';
+        return ""+ unidade;
     }
 }

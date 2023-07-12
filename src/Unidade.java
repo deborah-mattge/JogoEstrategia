@@ -9,8 +9,8 @@ public abstract class Unidade {
     private String cor;
 
 
-    public Unidade( String cor) {
-        this.cor=cor;
+    public Unidade(String cor) {
+        this.cor = cor;
 
 
     }
@@ -45,14 +45,18 @@ public abstract class Unidade {
     }
 
     public boolean validaExtremidade(int posicaoNoTabuleiro) {
-        return posicaoNoTabuleiro % 10 == 0;
+        if(posicaoNoTabuleiro%10==0 || posicaoNoTabuleiro-1%10==0) {
+            return true;
+        }
+        return false;
 
     }
 
     public abstract ArrayList<Posicao> possiveisMovimento(Campo campo);
+    public abstract void  possiveisMovimentoAtaques(Campo campo);
 
-    public abstract void atacar(Campo campo, Posicao posicao);
 
+    public abstract boolean atacar(Campo campo, Posicao posicao);
 
 
     public Posicao getPosicao() {
@@ -78,4 +82,5 @@ public abstract class Unidade {
     public void setVida(int vida) {
         this.vida = vida;
     }
+
 }

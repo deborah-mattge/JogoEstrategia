@@ -15,11 +15,15 @@ public class FortalezaEncantada extends Unidade {
 
         for(Posicao posicao : campo.getPosicoes()) {
             int indice =campo.getPosicoes().indexOf(posicao);
-            if(indice>=12 && indice<=18 || indice==2 || indice==7){
+            if(indice>=12 && indice<=18 && validaExtremidade(campo.getPosicoes().indexOf(posicao))||
+                    indice==2 && validaExtremidade(campo.getPosicoes().indexOf(posicao)) ||
+                            indice==7 && validaExtremidade(campo.getPosicoes().indexOf(posicao)) ) {
 
                 ataquePossiveis.add(posicao);
             }
-            if(indice>=82 && indice<=87 || indice==97 || indice==92) {
+            if(indice>=82 && indice<=87 && validaExtremidade(campo.getPosicoes().indexOf(posicao)) ||
+                    indice==97 && validaExtremidade(campo.getPosicoes().indexOf(posicao)) ||
+                    indice==92 && validaExtremidade(campo.getPosicoes().indexOf(posicao))) {
                 ataquePossiveis.add(posicao);
             }
         }
@@ -27,15 +31,17 @@ public class FortalezaEncantada extends Unidade {
     }
 
 
-    public void atacar(Campo campo, Posicao posicaoAtacar) {
+    public boolean atacar(Campo campo, Posicao posicaoAtacar) {
         possiveisMovimentoAtaques(campo);
        for(Posicao posicao:ataquePossiveis){
            if(posicao==posicaoAtacar){
-               posicaoAtacar.getUnidade().setVida(getVida()-3);
+               posicaoAtacar.getUnidade().setVida(getVida()-getDano());
+               return true;
            }
+
        }
 
-
+        return false;
 
     }
 
@@ -46,8 +52,6 @@ public class FortalezaEncantada extends Unidade {
 
     @Override
     public String toString() {
-        return "FortalezaEncantada{" +
-                "ataquePossiveis=" + ataquePossiveis +
-                "} " + super.toString();
+        return "Fortaleza" ;
     }
 }
