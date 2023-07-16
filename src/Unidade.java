@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public abstract class Unidade {
 
+
     private Posicao posicao;
     private int vida;
     private int dano;
@@ -28,8 +29,9 @@ public abstract class Unidade {
 
     public boolean mover(Campo campo, Posicao posicao) {
         ArrayList<Posicao> possiveisPosicoes = possiveisMovimento(campo);
+
         for (Posicao posicaoPossivel : possiveisPosicoes) {
-            if (posicaoPossivel == posicao) {
+            if (posicaoPossivel.equals(posicao)) {
                 //atribuindo a peça para nova posição no tabuleiro
                 posicao.setUnidade(this);
                 //removendo a peça da posição anterior
@@ -52,11 +54,26 @@ public abstract class Unidade {
 
     }
 
+    public void setPosicao(Posicao posicao) {
+        this.posicao = posicao;
+    }
+
     public abstract ArrayList<Posicao> possiveisMovimento(Campo campo);
-    public abstract void  possiveisMovimentoAtaques(Campo campo);
+    public abstract ArrayList<Posicao>  possiveisMovimentoAtaques(Campo campo);
 
 
-    public abstract boolean atacar(Campo campo, Posicao posicao);
+    public boolean atacar(Campo campo, Posicao posicaoAtacar){
+        ArrayList<Posicao>ataquePossiveis= possiveisMovimentoAtaques(campo);
+        for(Posicao posicao:ataquePossiveis){
+            if(posicao==posicaoAtacar){
+                posicaoAtacar.getUnidade().setVida(getVida()-getDano());
+                return true;
+
+            }
+        }
+        return false;
+    }
+
 
 
     public Posicao getPosicao() {

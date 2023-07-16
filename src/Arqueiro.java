@@ -13,7 +13,7 @@ public class Arqueiro extends Unidade{
         return null;
     }
 
-    public void possiveisMovimentoAtaques(Campo campo) {
+    public ArrayList<Posicao> possiveisMovimentoAtaques(Campo campo) {
 
         for(Posicao posicao : campo.getPosicoes()) {
             int indice =campo.getPosicoes().indexOf(posicao);
@@ -31,6 +31,7 @@ public class Arqueiro extends Unidade{
             }
 
         }
+        return ataquePossiveis;
 
     }
 
@@ -48,6 +49,6 @@ public class Arqueiro extends Unidade{
 
     @Override
     public String toString() {
-        return "Arqueiro" ;
+        return "Arqueiro  " ;
     }
 }

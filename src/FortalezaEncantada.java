@@ -11,7 +11,7 @@ public class FortalezaEncantada extends Unidade {
     }
 
 
-    public void possiveisMovimentoAtaques(Campo campo) {
+    public ArrayList<Posicao> possiveisMovimentoAtaques(Campo campo) {
 
         for(Posicao posicao : campo.getPosicoes()) {
             int indice =campo.getPosicoes().indexOf(posicao);
@@ -27,7 +27,7 @@ public class FortalezaEncantada extends Unidade {
                 ataquePossiveis.add(posicao);
             }
         }
-
+        return ataquePossiveis;
     }
 
 
@@ -52,6 +52,6 @@ public class FortalezaEncantada extends Unidade {
 
     @Override
     public String toString() {
-        return "Fortaleza" ;
+        return "Fortaleza " ;
     }
 }
