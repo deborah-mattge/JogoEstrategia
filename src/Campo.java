@@ -41,27 +41,35 @@ public class Campo {
             }
             if(i==81 || i==88){
                 posicoes.get(i).setUnidade((new Mago("Vermelho", "fogo") ));
+                posicoes.get(i).getUnidade().setPosicao(posicoes.get(i));
             }
             if(i==11 || i==18){
                 posicoes.get(i).setUnidade((new Mago("Azul", "fogo") ));
+                posicoes.get(i).getUnidade().setPosicao(posicoes.get(i));
             }
             if(i==80 || i==70 || i==71){
                 posicoes.get(i).setUnidade((new Mago("Vermelho", "agua") ));
+                posicoes.get(i).getUnidade().setPosicao(posicoes.get(i));
             }
             if(i==20 || i==10 || i==21){
                 posicoes.get(i).setUnidade((new Mago("Azul", "agua") ));
+                posicoes.get(i).getUnidade().setPosicao(posicoes.get(i));
             }
             if(i==89 || i==79 || i==78){
                 posicoes.get(i).setUnidade((new Mago("Vermelho", "terra") ));
+                posicoes.get(i).getUnidade().setPosicao(posicoes.get(i));
             }
             if(i==29 || i==19 || i==28){
                 posicoes.get(i).setUnidade((new Mago("Azul", "terra") ));
+                posicoes.get(i).getUnidade().setPosicao(posicoes.get(i));
             }
             if(i==82 || i==72 || i==87 || i==77 ){
                 posicoes.get(i).setUnidade((new Mago("Vermelho", "ar") ));
+                posicoes.get(i).getUnidade().setPosicao(posicoes.get(i));
             }
             if(i==22 || i==12 || i==27 || i==17 ){
                 posicoes.get(i).setUnidade((new Mago("Azul", "ar") ));
+                posicoes.get(i).getUnidade().setPosicao(posicoes.get(i));
             }
 
 

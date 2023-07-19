@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Executavel {
 
     static Campo campo = new Campo();
-    static int jogadorAtual = 1; // Variável para controlar o jogador atual
+    static int jogadorAtual = 1;
     static String corJogador1 = "Azul";
     static String corJogador2 = "Vermelho";
 
@@ -16,15 +16,17 @@ public class Executavel {
 
             for (int jogada = 1; jogada <= 3; jogada++) {
                 boolean jogadaValida = realizarJogada();
-                mostrarTabuleiro();
+
 
                 if (!jogadaValida) {
                     System.out.println("Jogada inválida! Tente novamente.");
-                    jogada--; // Desconta a jogada inválida
+                    jogada--;
+                }else{
+                    mostrarTabuleiro();
                 }
             }
 
-            jogadorAtual = (jogadorAtual == 1) ? 2 : 1; // Alterna para o próximo jogador
+            jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
         }
 
         System.out.println("Fim de jogo!");
@@ -33,7 +35,7 @@ public class Executavel {
 
     public static boolean realizarJogada() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Informe a posição da unidade que deseja mover (0-99): ");
+        System.out.print("Informe a posição da unidade que deseja usar (0-99): ");
         int posicaoOrigem = scanner.nextInt();
 
 
@@ -41,10 +43,15 @@ public class Executavel {
 
 
         Unidade unidade = origem.getUnidade();
+        String opcao =" ";
+        if (unidade != null && unidade.getCor().equals(obterCorJogador(jogadorAtual)) ) {
+            if(unidade.possiveisMovimento(campo)!=null){
+                System.out.print("Deseja mover (M) ou atacar (A)? ");
+                 opcao = scanner.next();
+            }else{
+                opcao="A";
+            }
 
-        if (unidade != null && unidade.getCor().equals(obterCorJogador(jogadorAtual))) {
-            System.out.print("Deseja mover (M) ou atacar (A)? ");
-            String opcao = scanner.next();
 
             if (opcao.equalsIgnoreCase("M")) {
                 System.out.print("Informe a posição para onde deseja mover a unidade (0-99): ");

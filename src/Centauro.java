@@ -55,7 +55,7 @@ public class Centauro extends Unidade{
             }
 
         }
-        for (int i = (validaExtremidade(posicaoNoTabuleiro + 1) ? -1 : posicaoNoTabuleiro + 1);
+        for (int i = (validaExtremidade(posicaoNoTabuleiro + 1) ? campo.getPosicoes().size() : posicaoNoTabuleiro + 1);
              i < campo.getPosicoes().size();
              i++) {
 
@@ -63,7 +63,7 @@ public class Centauro extends Unidade{
                 break;
             }
         }
-        for (int i = (validaExtremidade(posicaoNoTabuleiro) ? -1 : posicaoNoTabuleiro - 1);
+        for (int i = (validaExtremidade(posicaoNoTabuleiro) ? campo.getPosicoes().size() : posicaoNoTabuleiro - 1);
              i >= 0;
              i--) {
 
@@ -72,7 +72,7 @@ public class Centauro extends Unidade{
             }
         }
 
-
+        System.out.println(possiveisMovimentos);
         return possiveisMovimentos;
     }
 
