@@ -73,7 +73,7 @@ public class Executavel {
 
                 if (ataqueValido) {
                     System.out.println("Ataque realizado com sucesso!");
-                    System.out.println(alvo.getUnidade().getVida());
+                    System.out.println(alvo.getUnidade() +""+alvo.getUnidade().getVida());
 
                     if(campo.getPosicoes().get(posicaoAtaque).getUnidade().getVida()<=0){
                         campo.getPosicoes().get(posicaoAtaque).setUnidade(null);

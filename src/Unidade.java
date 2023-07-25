@@ -66,7 +66,10 @@ public abstract class Unidade {
         ArrayList<Posicao>ataquePossiveis= possiveisMovimentoAtaques(campo);
         for(Posicao posicao:ataquePossiveis){
             if(posicao==posicaoAtacar){
-                posicaoAtacar.getUnidade().setVida(getVida()-getDano());
+                System.out.println(posicaoAtacar.getUnidade()+""+posicaoAtacar.getUnidade().getVida());
+                System.out.println(this.getDano());
+                posicaoAtacar.getUnidade().setVida(getVida()-this.getDano());
+                System.out.println(posicaoAtacar.getUnidade()+""+posicaoAtacar.getUnidade().getVida());
                 return true;
 
             }

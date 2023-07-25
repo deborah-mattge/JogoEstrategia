@@ -34,43 +34,50 @@ public class Centauro extends Unidade{
         ArrayList<Posicao> possiveisMovimentos = new ArrayList<>();
 
         for (int i = posicaoNoTabuleiro + 10;
-             i < posicaoNoTabuleiro+40;
+             i < posicaoNoTabuleiro+40 ;
              i += 10) {
-            if (verificaUnidade(campo.getPosicoes().get(i), possiveisMovimentos) || validaExtremidade(i)) {
-                break;
-            }
-        }
-
-        for (int i = posicaoNoTabuleiro - 10;
-             i >= 0;
-             i -= 10) {
-            if(posicaoNoTabuleiro-40==i){
-                break;
-            }else {
-
-
-                if (verificaUnidade(campo.getPosicoes().get(i), possiveisMovimentos) || validaExtremidade(i + 1)) {
+            if(i<campo.getPosicoes().size()){
+                if (verificaUnidade(campo.getPosicoes().get(i), possiveisMovimentos) || validaExtremidade(i)) {
                     break;
                 }
             }
 
         }
+
+        for (int i = posicaoNoTabuleiro - 10;
+             i >= 0;
+             i -= 10) {
+            if(i<campo.getPosicoes().size()) {
+                if (posicaoNoTabuleiro - 40 == i) {
+                    break;
+                } else {
+
+
+                    if (verificaUnidade(campo.getPosicoes().get(i), possiveisMovimentos) || validaExtremidade(i + 1)) {
+                        break;
+                    }
+                }
+            }
+        }
         for (int i = (validaExtremidade(posicaoNoTabuleiro + 1) ? campo.getPosicoes().size() : posicaoNoTabuleiro + 1);
              i < campo.getPosicoes().size();
              i++) {
-
-            if (verificaUnidade(campo.getPosicoes().get(i), possiveisMovimentos) || validaExtremidade(i + 1)) {
-                break;
+            if(i<campo.getPosicoes().size()) {
+                if (verificaUnidade(campo.getPosicoes().get(i), possiveisMovimentos) || validaExtremidade(i + 1)) {
+                    break;
+                }
             }
         }
         for (int i = (validaExtremidade(posicaoNoTabuleiro) ? campo.getPosicoes().size() : posicaoNoTabuleiro - 1);
              i >= 0;
              i--) {
-
-            if (verificaUnidade(campo.getPosicoes().get(i), possiveisMovimentos) || validaExtremidade(i)) {
-                break;
+            if(i<campo.getPosicoes().size()) {
+                if (verificaUnidade(campo.getPosicoes().get(i), possiveisMovimentos) || validaExtremidade(i)) {
+                    break;
+                }
             }
         }
+
 
         System.out.println(possiveisMovimentos);
         return possiveisMovimentos;

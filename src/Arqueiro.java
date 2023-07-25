@@ -60,6 +60,7 @@ public class Arqueiro extends Unidade{
         for(Posicao posicao:ataquePossiveis){
             if(posicao==posicaoAtacar){
                 posicaoAtacar.getUnidade().setVida(getVida()-getDano());
+                System.out.println(posicaoAtacar.getUnidade()+""+posicaoAtacar.getUnidade().getVida());
                 return true;
             }
         }
