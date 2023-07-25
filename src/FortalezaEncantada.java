@@ -6,7 +6,7 @@ public class FortalezaEncantada extends Unidade {
     public FortalezaEncantada( String cor, String poder ) {
         super(cor);
         this.setDano(3);
-        this.setVida(9);
+        this.setVida(8);
 
     }
 

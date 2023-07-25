@@ -36,6 +36,7 @@ public class Centauro extends Unidade{
         for (int i = posicaoNoTabuleiro + 10;
              i < posicaoNoTabuleiro+40 ;
              i += 10) {
+
             if(i<campo.getPosicoes().size()){
                 if (verificaUnidade(campo.getPosicoes().get(i), possiveisMovimentos) || validaExtremidade(i)) {
                     break;
@@ -62,18 +63,22 @@ public class Centauro extends Unidade{
         for (int i = (validaExtremidade(posicaoNoTabuleiro + 1) ? campo.getPosicoes().size() : posicaoNoTabuleiro + 1);
              i < campo.getPosicoes().size();
              i++) {
-            if(i<campo.getPosicoes().size()) {
-                if (verificaUnidade(campo.getPosicoes().get(i), possiveisMovimentos) || validaExtremidade(i + 1)) {
-                    break;
+            if(i<posicaoNoTabuleiro+4) {
+                if (i < campo.getPosicoes().size()) {
+                    if (verificaUnidade(campo.getPosicoes().get(i), possiveisMovimentos) || validaExtremidade(i + 1)) {
+                        break;
+                    }
                 }
             }
         }
         for (int i = (validaExtremidade(posicaoNoTabuleiro) ? campo.getPosicoes().size() : posicaoNoTabuleiro - 1);
              i >= 0;
              i--) {
-            if(i<campo.getPosicoes().size()) {
-                if (verificaUnidade(campo.getPosicoes().get(i), possiveisMovimentos) || validaExtremidade(i)) {
-                    break;
+            if(i>posicaoNoTabuleiro-4) {
+                if (i < campo.getPosicoes().size()) {
+                    if (verificaUnidade(campo.getPosicoes().get(i), possiveisMovimentos) || validaExtremidade(i)) {
+                        break;
+                    }
                 }
             }
         }

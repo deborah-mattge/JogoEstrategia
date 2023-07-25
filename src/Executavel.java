@@ -17,12 +17,14 @@ public class Executavel {
             for (int jogada = 1; jogada <= 3; jogada++) {
                 boolean jogadaValida = realizarJogada();
 
-
                 if (!jogadaValida) {
                     System.out.println("Jogada inválida! Tente novamente.");
                     jogada--;
-                }else{
+                } else {
                     mostrarTabuleiro();
+                    if(fimDeJogo()){
+                        break;
+                    }
                 }
             }
 
@@ -43,13 +45,13 @@ public class Executavel {
 
 
         Unidade unidade = origem.getUnidade();
-        String opcao =" ";
-        if (unidade != null && unidade.getCor().equals(obterCorJogador(jogadorAtual)) ) {
-            if(unidade.possiveisMovimento(campo)!=null){
+        String opcao = " ";
+        if (unidade != null && unidade.getCor().equals(obterCorJogador(jogadorAtual))) {
+            if (unidade.possiveisMovimento(campo) != null) {
                 System.out.print("Deseja mover (M) ou atacar (A)? ");
-                 opcao = scanner.next();
-            }else{
-                opcao="A";
+                opcao = scanner.next();
+            } else {
+                opcao = "A";
             }
 
 
@@ -73,9 +75,9 @@ public class Executavel {
 
                 if (ataqueValido) {
                     System.out.println("Ataque realizado com sucesso!");
-                    System.out.println(alvo.getUnidade() +""+alvo.getUnidade().getVida());
+                    System.out.println(alvo.getUnidade() + "" + alvo.getUnidade().getVida());
 
-                    if(campo.getPosicoes().get(posicaoAtaque).getUnidade().getVida()<=0){
+                    if (campo.getPosicoes().get(posicaoAtaque).getUnidade().getVida() <= 0) {
                         campo.getPosicoes().get(posicaoAtaque).setUnidade(null);
                     }
                     return true;
@@ -90,14 +92,21 @@ public class Executavel {
     }
 
     public static boolean fimDeJogo() {
-        // Verifica se todas as fortalezas foram destruídas
+        boolean fortalezaAzulMorta = false;
+        boolean fortalezaVermelhaMorta = false;
+
         for (Posicao posicao : campo.getPosicoes()) {
             Unidade unidade = posicao.getUnidade();
             if (unidade instanceof FortalezaEncantada && unidade.getVida() > 0) {
-                return false;
+                if (unidade.getCor().equals("Vermelho")) {
+                    fortalezaVermelhaMorta = true;
+                } else if (unidade.getCor().equals("Azul")) {
+                    fortalezaAzulMorta = true;
+                }
             }
         }
-        return true;
+
+        return !(fortalezaAzulMorta && fortalezaVermelhaMorta);
     }
 
     public static String obterCorJogador(int jogador) {
