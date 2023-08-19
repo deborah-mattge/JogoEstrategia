@@ -32,6 +32,17 @@ public class Centauro extends Unidade{
 
         int posicaoNoTabuleiro = campo.getPosicoes().indexOf(posicaoAtual);
         ArrayList<Posicao> possiveisMovimentos = new ArrayList<>();
+//        for (int i = posicaoNoTabuleiro - 30;
+//             i < posicaoNoTabuleiro+40 ;
+//             i += 10) {
+//
+//            if(i<campo.getPosicoes().size() && i>0 ){
+//                if (verificaUnidade(campo.getPosicoes().get(i), possiveisMovimentos) || validaExtremidade(i)) {
+//                    break;
+//                }
+//            }
+//
+//        }
 
         for (int i = posicaoNoTabuleiro + 10;
              i < posicaoNoTabuleiro+40 ;

@@ -32,6 +32,17 @@ public class Mago extends Unidade {
 
         int posicaoNoTabuleiro = campo.getPosicoes().indexOf(posicaoAtual);
         ArrayList<Posicao> possiveisMovimentos = new ArrayList<>();
+//        for (int i = posicaoNoTabuleiro - 20;
+//             i < posicaoNoTabuleiro+40 ;
+//             i += 10) {
+//
+//            if(i<campo.getPosicoes().size() && i>0 ){
+//                if (verificaUnidade(campo.getPosicoes().get(i), possiveisMovimentos) || validaExtremidade(i)) {
+//                    break;
+//                }
+//            }
+//
+//        }
 
         for (int i = posicaoNoTabuleiro + 10;
              i < posicaoNoTabuleiro+30 ;
@@ -117,16 +128,16 @@ public class Mago extends Unidade {
 
     @Override
     public String toString() {
-        if(this.poder=="agua"){
+        if(this.poder.equals("agua")){
             return "Mago-Agua ";
         }
-        if(this.poder=="fogo"){
+        if(this.poder.equals("fogo")){
             return "Mago-Fogo ";
         }
-        if(this.poder=="terra"){
+        if(this.poder.equals("terra")){
             return "Mago-Terra";
         }
-        if(this.poder=="ar"){
+        if(this.poder.equals("ar")){
             return "  Mago-Ar ";
         }
         return "Mago " + poder;
